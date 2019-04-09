@@ -1,18 +1,14 @@
-
-
-
 import json
+import logging
+from service.userutils import *
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
-def get_user(event, context):
-    body = {
-        "message": "Go Serverless v1.0! Your function executed successfully!",
-        "input": event
-    }
-
-    response = {
-        "statusCode": 200,
-        "body": json.dumps(body)
-    }
-
-    return response
+def handler(event, context):
+    logger.info("handler here!")
+    httpMethod = event.get('httpMethod')
+    if httpMethod == 'GET':
+        return get_user(event, context)
+    elif httpMethod == 'POST':
+        return create_user(event, context)

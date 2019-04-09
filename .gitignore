@@ -19,3 +19,8 @@ var/
 
 # Serverless directories
 .serverless
+.DS_Store
+.vscode
+venv
+.requirements
+node_modules
